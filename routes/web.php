@@ -19,9 +19,7 @@ Route::get('/admin/login', function () {
     return view('login');
 });
 
-Route::get('/admin', function (){
-    return view('admin');
-});
+Route::get('/admin', "AdminController@panel");
 
 
 Auth::routes();
