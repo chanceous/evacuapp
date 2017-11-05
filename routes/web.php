@@ -11,15 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', "inicio@index");
+
+Route::get('/consejos', function () {
+    return view('consejos');
+});
+
+Route::get('/alertar', "refugios@alertar");
+
+Route::get('/restaurar', "refugios@restaurar");
+
+Route::get('/listo', function () {
+    return view('listo');
+});
+
+Route::get("/install", function() {
+	Artisan::call("config:clear");
+	Artisan::call("cache:clear");
+	Artisan::call("migrate");
 });
 
 Route::get('/admin/login', function () {
     return view('login');
 });
 
-Route::get('/admin', "AdminController@panel");
+Route::get('/admin', "refugios@index");
 
 
 Auth::routes();
